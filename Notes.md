@@ -43,6 +43,54 @@
       - [Domain Name System (DNS)](#domain-name-system-dns)
       - [Amazon Route 53](#amazon-route-53)
   - [5. Storage and Databases](#5-storage-and-databases)
+    - [Instance Stores and Amazon Elastic Block Store](#instance-stores-and-amazon-elastic-block-store)
+      - [Instance Stores](#instance-stores)
+      - [Amazon EBS snapshots](#amazon-ebs-snapshots)
+    - [Simple Storage Service (Amazon S3)](#simple-storage-service-amazon-s3)
+      - [Object storage](#object-storage)
+      - [Amazon Simple Storage Service](#amazon-simple-storage-service)
+      - [Amazon S3 storage classes](#amazon-s3-storage-classes)
+      - [Comparison Between EBS and S3](#comparison-between-ebs-and-s3)
+    - [Elastic File System](#elastic-file-system)
+      - [File Storage](#file-storage)
+      - [EBS vs EFS](#ebs-vs-efs)
+    - [Relational Database Service RDS](#relational-database-service-rds)
+      - [Amazon Aurora](#amazon-aurora)
+    - [Amazon Dynamo DB](#amazon-dynamo-db)
+      - [Dynamo DB](#dynamo-db)
+    - [Amazon Redshift](#amazon-redshift)
+    - [Database Migration Service](#database-migration-service)
+    - [Additional Database Services](#additional-database-services)
+  - [6. Security](#6-security)
+    - [AWS Shared Responsibility Model](#aws-shared-responsibility-model)
+    - [User Permissions and Access](#user-permissions-and-access)
+      - [AWS Identity and Access Management (IAM)](#aws-identity-and-access-management-iam)
+      - [AWS Account Root User](#aws-account-root-user)
+      - [IAM users](#iam-users)
+      - [IAM policies](#iam-policies)
+      - [IAM groups](#iam-groups)
+      - [IAM roles](#iam-roles)
+      - [Multi-factor authentication](#multi-factor-authentication)
+    - [AWS Organizations](#aws-organizations)
+      - [Organizational Units](#organizational-units)
+    - [Compliance](#compliance)
+      - [AWS Artifact](#aws-artifact)
+      - [Customer Compliance Center](#customer-compliance-center)
+    - [Denial-of-Service Attacks](#denial-of-service-attacks)
+      - [AWS Shield](#aws-shield)
+    - [Additional Security Servcies](#additional-security-servcies)
+      - [AWS Key Management Service (AWS KMS)](#aws-key-management-service-aws-kms)
+      - [AWS WAF](#aws-waf)
+      - [Amazon Inspector](#amazon-inspector)
+      - [Amazon GuardDuty](#amazon-guardduty)
+  - [7. Monitoring and Analytics](#7-monitoring-and-analytics)
+    - [Amazon CloudWatch](#amazon-cloudwatch)
+      - [CloudWatch alarms](#cloudwatch-alarms)
+      - [CloudWatch Dashboard](#cloudwatch-dashboard)
+    - [AWS CloudTrail](#aws-cloudtrail)
+      - [CloudTrail Insights](#cloudtrail-insights)
+    - [AWS Trusted Advisor](#aws-trusted-advisor)
+      - [AWS Trusted Advisor dashboard](#aws-trusted-advisor-dashboard)
 
 
 ## 1: Introduction to AWS
@@ -390,6 +438,323 @@ The phone book of the internet.
 
 
 ## 5. Storage and Databases
+
+### Instance Stores and Amazon Elastic Block Store
+
+#### Instance Stores
+
+- **Block-level storage** volumes behave like physcial hard drives.
+
+An instance store provides temporary block-level storage to an instance.
+- This storage is from the drives attached to the host computer of the instance.
+- Has the lifespan of the instance. 
+
+- **Amazon Elastic Block Store (EBS)** is a service that provides block-level stoarge volumes for instances that aren't terminated with the instance.
+- Created by defining the config and provisioning it.
+
+#### Amazon EBS snapshots
+
+- **EBS snapshots** are incremental backups
+1. First backup: copies all data.
+2. Subsequent backups: only updated or added blocks are saved. 
+
+### Simple Storage Service (Amazon S3)
+
+#### Object storage
+
+- in **Object storage** each object consists of data, metadata, and a key
+- When a file in object storage is modified, the entire object is updated.
+
+#### Amazon Simple Storage Service
+
+- **Amazon S3** is a service that provides object-level storage. 
+- objects in buckets.
+- Maximum file size (a file being considered the data in an object) is 5 TB
+- Can change access permissions as well as view versions from previous backups.
+
+#### Amazon S3 storage classes
+
+- offers a range of storage classes to fit business and cost needs
+- Consider these things when picking
+  1. How often you plan to retrieve your data
+  2. How available you need your data to be
+
+- **S3 Standard**
+  - Designed for frequently accessed data
+  - Stores data in a min of 3 availability zones.
+  - Has higher cost than other storage classes that are geared towards infrequently accessed data
+
+- **S3 Standard-Infrequent Access**
+  - Similar to strandard byut with a lower storage price and higher retrieval price.
+
+- **S3 One Zone-Infrequent Access**
+  - One availability zone
+  - low storage price
+  - Good if:
+    - You want to save costs
+    - You can easily reproduce your data
+
+- **S3 Intelligent-Tiering**
+  - Ideal for data with unknown or changing access patterns
+  - Requires a small monthly monitoring and automation fee per object
+  - Moves objects between the two standard tiers based on access patterns
+
+- **S3 Glacier Instant Retrieval**
+  - Work well for archived data that requires immediate access.
+
+- **S3 Glacier Flexible Retrieval**
+  - Low cost storage for archiving data
+  - can take a minute to 12 hours to recieve date depending on your needs
+
+- **S3 Glcaier Deep Archive**
+  - Lowest cost object storage class
+  - able to retrieve within 12 hours
+
+- **S3 Outposts**
+  - Allows for S3 buckets to be created on premises at an AWS Outpost
+  
+
+#### Comparison Between EBS and S3
+
+- if using cpomplete objects or only occasional changes S3 is best
+- if doing complex changes on a single object. Use EBS
+
+### Elastic File System
+
+#### File Storage
+
+- in file storage, multiple clients can access data that is stored in shared file folders.
+- Block level storage with a local file system to organize files.
+
+#### EBS vs EFS
+
+- EBS stores data in a single availability zone, in that zone is only place it can be accessed.
+- EFS stores data accross multiple availability zones so that it can be accessed anywhere.
+
+### Relational Database Service RDS
+
+- Enables you to use relational databases in AWS
+- automates tasks such as hardware provisioning, database setup, patching, and backups. 
+- Offers encryption at rest (encrypted while it is being stored) and encryption in transit
+
+#### Amazon Aurora
+
+- enterprise-class RDB
+- 5x faster than standard MySQL dbs and 3x faster than standard PostgreSQL dbs.
+- Helps reduce database costs by reducing unnecessary I/O operations.
+
+### Amazon Dynamo DB
+
+- **Non-Relational DBS** are databases that don't form relations between objects. Also called NoSQL
+
+#### Dynamo DB
+
+- key-value database service
+- VERY FAST
+- Serverless (don't have to provision anything!)
+- Auto-scales up and down!
+
+### Amazon Redshift
+
+- Data warehouses: Big data analytics. 
+  - Used when you are looking to the past.
+
+- Redshift: Can run queries on LARGE quantities of data. 
+- Used for BUSINESS INTELLIGENCE (BI)
+
+### Database Migration Service
+
+- Allows you to migrate a database from one place to another while remaining operational.
+- Allows you to test applications data against production data, combine databases, and replicate data in real time.
+
+### Additional Database Services
+
+- DocumentDB:
+  - document db service supports MongoDB
+- Neptune:
+  - Graph database
+  - Used for highly connected data sets:
+    - recommendation engines
+    - fraud detection
+    - knowledge graohs
+- Quantum Ledger Databse:
+  - ledger database service
+  - review complete history of all changes that been made to your application data.
+- Managed Blockchain:
+  - create and manage blockchain networks with open-source frameworks.
+  - Blockchain is distributed ledger system. (Like bitcoin)
+- ElastiCache:
+  - Adds cache layer on top of db to increase read times of common 
+  requests
+- DynamoDB Accelorator
+  - Addes in-memory cache to DynamoDB
+
+## 6. Security
+
+### AWS Shared Responsibility Model
+
+- Security of AWS environment is in part the responsibility of AWS and part responsibility of the the customer.
+- Customer resposibilities: "security in the cloud"
+- AWS responsibilities: "security of the cloud"
+
+!["Security-of-the-cloud_vs_security-in-the-cloud"](security-cloud.png)
+
+### User Permissions and Access
+
+#### AWS Identity and Access Management (IAM)
+
+- enables you to manage access to AWS services securely
+- IAM features allow you to configure access based on you companies needs
+
+#### AWS Account Root User
+
+- owner of the coffee shop
+- Best to **not** use your root user for everyday tasks
+  - instead, create your first IAM user and assign it the ability to create other users.
+- only use the root user for tasks that **require** the root user, such as changing that user's credentials and changing your AWS support plan.
+
+#### IAM users
+
+- An identity you create in AWS.
+- Represents a person or application (such as a script) that interacts with AWS services and resources. 
+- By default, has no permissions.
+
+#### IAM policies
+
+- document that allows or denies permissions to AWS services and resources.
+- Enable you to customize users' levels of access to resources. 
+- Best practice is to follow the principle of **least privilege** when granting permissions.
+- IAM policies are attached to users.
+
+#### IAM groups
+
+- A collection of IAM users.
+- Used to grant and deny privileges to users with similar roles.
+
+#### IAM roles
+
+- Grants or denies permissions
+- ideal for situations in which access to services or resources needs to be granted temporarily.
+
+#### Multi-factor authentication
+
+- IAM has MFA.
+
+### AWS Organizations
+
+- Used when your company has multiple AWS accounts linked to it
+- When an organization is created it creates a **root**. 
+  - Parent container for all accounts
+
+#### Organizational Units
+
+- Helps to isolate workloads or applications that have specific security requirements.
+- Attach policies to the OU
+
+
+### Compliance
+
+#### AWS Artifact
+
+- An audit or inspection can help ensure that your company uphold regulatory standards.
+- AWS Artificat is a service that provides on0demand access to AWS security and compliance reports and select online agreements.
+
+**AWS Artificat Agreements**
+- In AWS Artifact Agreements, you can review, accept, and manage agreements for an individual account and for all your accounts in AWS Organizations. 
+**AWS Artifact Reports**
+- provides compliance reports from third party auditors
+- helps organizations/teams know they are staying within regulation.
+
+#### Customer Compliance Center
+
+- contains resources to help you learn more about AWS compliance
+
+### Denial-of-Service Attacks
+
+- attackers attempt to deny others from a service.
+- Distributed DoS (DDoS) involves using myltiple sources to overwhelm the server.
+
+#### AWS Shield
+
+- Protects Againsts DDoS
+
+**Standard**
+- Uses various analysis techniques to detect malicious traffic in real time
+**Advanced**
+- Provides detailed diagnostics as well 
+
+### Additional Security Servcies
+
+#### AWS Key Management Service (AWS KMS)
+
+- can choose the specific levels of access control the you need for your keys.
+- Example: You can specify which users or groups have access to certain keys. Or you can disable a key that no one uses.
+
+#### AWS WAF
+
+- Web application firewall
+- Works with Amazon CloudFront and an Application Load Balancer.
+- Uses a web access control list (ACL) to protect resources.
+  - This ACL is stateful. Though it always works with a permission list.
+
+![AWS-WAF](AWS-WAF.png)
+
+#### Amazon Inspector
+
+- performs automated security tests
+- Provides a detailed list ordered by severity of security issues
+- SHARED RESPONSIBILITY MODEL this tool doesn't guaruntee security.
+
+#### Amazon GuardDuty
+
+- Inspects network and account activity for security findings.
+- Can find detailed findings about threats detected in the AWS Management Console.
+
+## 7. Monitoring and Analytics
+
+### Amazon CloudWatch
+
+- A web service that enables you to monitor and manage various metrics and configure alarm actions based on data from those metrics
+- Metrics are used to represent data points for your resources. 
+- Cloud watch plots metrics graphically with respect to time.
+
+#### CloudWatch alarms
+
+- create alarms that automatically perform actions if the value of a metric goes above or below a threshold.
+
+#### CloudWatch Dashboard 
+
+![CloudWatch_Dashboard](CloudWatch-Dashboard.png)
+
+### AWS CloudTrail
+
+- Makes a record of all API calls and all necessary data from them to monitor them.
+- Typically updated 15 minutes after event occurrence
+
+#### CloudTrail Insights
+
+- Within CloudTrail, you can enable insights
+- Allows CloudTrail to auytomatically detect unusal API activities.
+
+### AWS Trusted Advisor
+
+- web service that inspects your AWS environment and provides recommendations based on AWS best practices
+- "Trusted Advisor compares its findings to AWS best practices in five categories: cost optimization, performance, security, fault tolerance, and service limits."
+  
+#### AWS Trusted Advisor dashboard
+
+![Advisor_Dashboard](Trusted_Advisor_Dash.png)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
