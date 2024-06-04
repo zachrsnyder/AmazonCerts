@@ -3,94 +3,52 @@
   - [1: Introduction to AWS](#1-introduction-to-aws)
     - [Introduction](#introduction)
     - [Cloud Computing](#cloud-computing)
-      - [Deployment models for cloud computing](#deployment-models-for-cloud-computing)
-      - [Benefits of Cloud Computing](#benefits-of-cloud-computing)
   - [2: Compute in the Cloud](#2-compute-in-the-cloud)
     - [Introduction](#introduction-1)
-      - [Amazon Elastic Compute Cloud (Amazon EC2)](#amazon-elastic-compute-cloud-amazon-ec2)
     - [Amazon EC2 Instance Types](#amazon-ec2-instance-types)
     - [Amazon EC2 Pricing](#amazon-ec2-pricing)
     - [Scaling EC2](#scaling-ec2)
-      - [Scalability:](#scalability)
     - [Directing Traffic with Elastic Load Balancing](#directing-traffic-with-elastic-load-balancing)
     - [Messaging and Queueing](#messaging-and-queueing)
-      - [Monolithic Applications vs Microservices](#monolithic-applications-vs-microservices)
     - [Additional Compute Services](#additional-compute-services)
   - [3: Global Infrastructure and Reliability](#3-global-infrastructure-and-reliability)
     - [AWS Global Infrastructure](#aws-global-infrastructure)
     - [Edge Locations](#edge-locations)
     - [How to Provision AWS Resources](#how-to-provision-aws-resources)
-      - [AWS Management Console](#aws-management-console)
-      - [AWS CLI](#aws-cli)
-      - [Software Development Kits](#software-development-kits)
-      - [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
-      - [AWS CloudFormation](#aws-cloudformation)
   - [4. Networking](#4-networking)
     - [Intro](#intro)
-      - [Amazon Virtual Private Cloud](#amazon-virtual-private-cloud)
     - [Connectivity to AWS](#connectivity-to-aws)
-      - [Internet gateway](#internet-gateway)
-      - [Virtual Private Gateway](#virtual-private-gateway)
-      - [AWS Direct Connect](#aws-direct-connect)
     - [Subnets and Network Access Control Lists](#subnets-and-network-access-control-lists)
-      - [Subnets](#subnets)
-      - [Netwrok Traffic in a VPC](#netwrok-traffic-in-a-vpc)
-      - [Network Access Control List (ACL)](#network-access-control-list-acl)
-      - [Stateless Packet Filtering](#stateless-packet-filtering)
-      - [Security Groups](#security-groups)
-      - [Stateful Packet Filtering](#stateful-packet-filtering)
     - [Global Networking](#global-networking)
-      - [Domain Name System (DNS)](#domain-name-system-dns)
-      - [Amazon Route 53](#amazon-route-53)
   - [5. Storage and Databases](#5-storage-and-databases)
     - [Instance Stores and Amazon Elastic Block Store](#instance-stores-and-amazon-elastic-block-store)
-      - [Instance Stores](#instance-stores)
-      - [Amazon EBS snapshots](#amazon-ebs-snapshots)
     - [Simple Storage Service (Amazon S3)](#simple-storage-service-amazon-s3)
-      - [Object storage](#object-storage)
-      - [Amazon Simple Storage Service](#amazon-simple-storage-service)
-      - [Amazon S3 storage classes](#amazon-s3-storage-classes)
-      - [Comparison Between EBS and S3](#comparison-between-ebs-and-s3)
     - [Elastic File System](#elastic-file-system)
-      - [File Storage](#file-storage)
-      - [EBS vs EFS](#ebs-vs-efs)
     - [Relational Database Service RDS](#relational-database-service-rds)
-      - [Amazon Aurora](#amazon-aurora)
     - [Amazon Dynamo DB](#amazon-dynamo-db)
-      - [Dynamo DB](#dynamo-db)
     - [Amazon Redshift](#amazon-redshift)
     - [Database Migration Service](#database-migration-service)
     - [Additional Database Services](#additional-database-services)
   - [6. Security](#6-security)
     - [AWS Shared Responsibility Model](#aws-shared-responsibility-model)
     - [User Permissions and Access](#user-permissions-and-access)
-      - [AWS Identity and Access Management (IAM)](#aws-identity-and-access-management-iam)
-      - [AWS Account Root User](#aws-account-root-user)
-      - [IAM users](#iam-users)
-      - [IAM policies](#iam-policies)
-      - [IAM groups](#iam-groups)
-      - [IAM roles](#iam-roles)
-      - [Multi-factor authentication](#multi-factor-authentication)
     - [AWS Organizations](#aws-organizations)
-      - [Organizational Units](#organizational-units)
     - [Compliance](#compliance)
-      - [AWS Artifact](#aws-artifact)
-      - [Customer Compliance Center](#customer-compliance-center)
     - [Denial-of-Service Attacks](#denial-of-service-attacks)
-      - [AWS Shield](#aws-shield)
     - [Additional Security Servcies](#additional-security-servcies)
-      - [AWS Key Management Service (AWS KMS)](#aws-key-management-service-aws-kms)
-      - [AWS WAF](#aws-waf)
-      - [Amazon Inspector](#amazon-inspector)
-      - [Amazon GuardDuty](#amazon-guardduty)
   - [7. Monitoring and Analytics](#7-monitoring-and-analytics)
     - [Amazon CloudWatch](#amazon-cloudwatch)
-      - [CloudWatch alarms](#cloudwatch-alarms)
-      - [CloudWatch Dashboard](#cloudwatch-dashboard)
     - [AWS CloudTrail](#aws-cloudtrail)
-      - [CloudTrail Insights](#cloudtrail-insights)
     - [AWS Trusted Advisor](#aws-trusted-advisor)
-      - [AWS Trusted Advisor dashboard](#aws-trusted-advisor-dashboard)
+  - [8. Pricing and Support](#8-pricing-and-support)
+    - [AWS Free Tier](#aws-free-tier)
+    - [AWS Pricing Concepts](#aws-pricing-concepts)
+    - [Billing Dashboard](#billing-dashboard)
+    - [Consolidated Billing](#consolidated-billing)
+    - [AWS Budgets](#aws-budgets)
+    - [AWS Cost Explorer](#aws-cost-explorer)
+    - [AWS Support Plans](#aws-support-plans)
+    - [AWS Marketplace](#aws-marketplace)
 
 
 ## 1: Introduction to AWS
@@ -744,6 +702,107 @@ An instance store provides temporary block-level storage to an instance.
 #### AWS Trusted Advisor dashboard
 
 ![Advisor_Dashboard](Trusted_Advisor_Dash.png)
+
+## 8. Pricing and Support
+
+### AWS Free Tier
+
+3 options for using AWS for free
+
+1. Always Free
+   - Each service has a limit on what can be used for free per month
+   - For example, AWS Lambda allows 1 million free requests and up to 3.2 million seconds of compute time per month. Amazon DynamoDB allows 25 GB of free storage per month.
+2. 12 Months Free
+   - free for first 12 months of initial sign-up
+   - Examples include specific amounts of Amazon S3 Standard Storage, thresholds for monthly hours of Amazon EC2 compute time, and amounts of Amazon CloudFront data transfer out.
+3. Free trials
+   - offers for services that are fixed length terms that begin when you start using the service
+   - For example, Amazon Inspector offers a 90-day free trial. Amazon Lightsail (a service that enables you to run virtual private servers) offers 750 free hours of usage over a 30-day period.
+
+### AWS Pricing Concepts
+
+#### How AWS Pricing Works
+
+There are 3 categories
+1. Pay for what you use. No contracts
+2. Pay less money when you reserve the services prior.
+3. Buy in bulk for cheaper rates.
+
+#### AWS Pricing Calculator
+
+- Lets you explore pricing options.
+- Can organize pricings into groups with the goal of organizing pricing how you organize your company and it's financials.
+
+### Billing Dashboard
+
+- Compare your current month-to-date balance with the previous month, and get a forecast of the next month based on current usage.
+- View month-to-date spend by service.
+- View Free Tier usage by service.
+- Access Cost Explorer and create budgets.
+- Purchase and manage Savings Plans.
+- Publish AWS Cost and Usage Reports(opens in a new tab).
+
+### Consolidated Billing
+
+- Allows you to conjoin all bills from all accounts in an organization.
+- This is Consolidated Billing
+- The bill is given to the root user of the org.
+- Billing is aggeregated so that you get full use of any savings plans and reserved instances.
+  
+### AWS Budgets
+
+- Allows you to set limits on how much you are willing to spend 
+- sends an alert when near or exceeding a budget.
+- Updates every 3 days.
+
+### AWS Cost Explorer
+
+- Graphicly displays cost usage.
+
+### AWS Support Plans
+
+#### Basic Support
+
+- free
+- includes:
+  - whitepapers
+  - documentation
+  - support communities
+  - can also contact AWS for billing
+  - Limited # of trusted advisor checks
+  - AWS Personal Health Dashboard
+
+#### Better Support
+
+- each have the same benefits as Basic Support plus the ability to open up infinite technical support cases
+- Pay by month pricing
+- in ascending order of pricing
+  1. Developer Support
+      - Best practice guidance
+      - client-side diagnostic tools
+      - building-block architecture support, consisting of guidance for how to use AWS services together.
+  2. Business Support
+      - Use-case guidance
+      - All AWS Trusted Advisor checks
+      - Limited support for third-party software
+  3. Enterprise On-Ramp
+      - it just keeps getting better
+  4. Enterprise
+      - and better
+
+#### Technical Account Manager (TAM)
+
+- Available for both Enterprise and Enterprise On-Ramp
+- Basically a homie that provides proper guidance on how to use AWS services best
+
+### AWS Marketplace
+
+- digital catalog of thousands of software listings from independent software vendors
+- Use it to find, test, and buy software that runs on AWS.
+- Can explore solutions by industry and use case.
+
+![Marketplace_Categories](Marketplace.png)
+
 
 
 
