@@ -49,6 +49,11 @@
     - [AWS Cost Explorer](#aws-cost-explorer)
     - [AWS Support Plans](#aws-support-plans)
     - [AWS Marketplace](#aws-marketplace)
+  - [9. Migration and Innovation](#9-migration-and-innovation)
+    - [AWS Cloud Adoption Framework (AWS CAF)](#aws-cloud-adoption-framework-aws-caf)
+    - [Migration Strategies](#migration-strategies)
+    - [AWS Snow Family](#aws-snow-family)
+    - [Innovate with AWS](#innovate-with-aws)
 
 
 ## 1: Introduction to AWS
@@ -803,10 +808,109 @@ There are 3 categories
 
 ![Marketplace_Categories](Marketplace.png)
 
+## 9. Migration and Innovation
 
+### AWS Cloud Adoption Framework (AWS CAF)
 
+#### Six Core Perspectives of the CAF
 
+- AWS CAF organizes guidance into siz ares of focus, called perspectives.
 
+1. Business Perspective:
+   - Ensures that IT aligns with business needs and that IT investments are linked to key business results
+   - Create a strong business case for why cloud adoption is the right move.
+   - Roles in Business Perspective
+     - Business managers
+     - Finance Managers
+     - Budget Owners
+     - Strategy stakeholders
+2. People Perspective
+   - Evaluates organizational structures and role, new skill and process requirements, and identify gaps created by cloud adoption
+   - Roles in People Perspective
+     - Human resources
+     - Staffing
+     - People managers
+3. Governance Perspective
+   - used to understand how to update the staff skills and processes to ensure business governance in the cloud.
+   - Common roles in the Governance Perspective
+     - Cheif Information Officer
+     - Program managers
+     - Enterprise Architects
+     - Business Architects
+     - Business analusts
+     - portfolio managers
+4. Platform Perspective
+   - includes principles and patterns for finding new solutions on the cloud, as well as migrating on-premises workloads to the cloud
+   - Use architectural models to understand and communicate the structure of IT systems and the their relationships (loosely coupled services and how they work together)
+   - Common roles in the Platform Perspective
+     - CTO
+     - IT managers
+     - Solutions architects
+5.  Security Perspective 
+   - ensures that the org meets secuirty objectives for visibility, auditability, control, and agility
+   - Common roles
+     - Chief Information Security Officer
+     - IT security managers
+     - IT security analysts
+6. Operations Perspective
+   - Define how day-to-day, quarter-to-quarter, year-to-year business is conducted once migrated to the cloud.
+   - Common Roles
+     - IT operations managers
+     - IT support managers
+
+### Migration Strategies
+
+- 6 common strategies for migrating applications to the cloud.
+
+1. Rehosting
+   - also known as "lift-and-shift"
+   - involves simply moving the application to the cloud
+   - used a lot with legacy applications that aren't wanting to change typically for business cases
+2. Replatforming
+   - aka "lift, tinker, and shift"
+   - involves making a few optimizations to realize a tangible benefit.
+3. Refactoring/re-architecting
+   - involves rethinking how an application is architected to make it better suited for the cloud and better suited for scalibility, performance, and added features.
+   - modularity is always ideal!!!!
+4. Repurchasing
+   - involves moving from a traditional license to a software-as-a-service model.
+   - So basically switching to a cloud-based version.
+5. Retaining
+   - keeping applications that are critical for the business in the same environment
+   - considered especially when the app requires major refactoring before it can be moved to the cloud, and keeping its functionality is crucial to the business
+6. Retiring
+   - remove apps no longer needed after the migration.
+
+### AWS Snow Family
+
+- AWS Snow Family is a collection of physical devices that help to physcially transport up to exabytes of data into and out of AWS
+
+- Snowcone
+  - small, rugged and secure edge computing and data transfer device
+  - features 2 CPUs, 4 GB of memory, and up to 14 TB of usable storage
+- Snowball
+  - Storage Optimized
+    - well suited for large-scale data migrations and recurring transfer workflows.
+    - Storage: 80 TB of hard disk drive capacity for block volumes and S3 compatible object storgage, as well as 1 TB of SSD for block volumes
+    - Compute: 40 vCPUs, and 80 GiB of memory
+  - Compute Optimized
+    - provides powerful computing resources for use cases such as ML, full motion video analysis, analytics, and local computing stacks.
+    - Storage: 80-TB usable HDD capacity for EBS block volumes OR S3 Object storage. Also 28 TBs of usable NVMe SSD capcity for EBS compatible block volumes
+    - Compute: 104 vCPUs, 416 GiB of memory, and an optional NVIDIA Tesla V100 GPU.
+    - Devices run Amazon EC2 sbe-c and sbe-g instances, which are equivalent to C5, M5a, G3, and P3 instances.
+- Snowmobile
+  - exabyte-scale data transfer service
+  - 100 petabytes of data per Snowmobile, a 45-foot long shipping container pulled by a semi.
+
+### Innovate with AWS
+
+Drive innovation in the cloud by communicating the following conditions
+
+- current state
+- the desired state
+- the problems you are trying to solve.
+
+Serverless **Applications**
 
 
 
